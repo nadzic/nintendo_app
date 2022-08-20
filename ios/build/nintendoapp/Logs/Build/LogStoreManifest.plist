@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>28FABDAD-B750-41E4-B8FC-376995244402</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>28FABDAD-B750-41E4-B8FC-376995244402.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>nintendoapp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>nintendoapp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project nintendoapp with scheme nintendoapp and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>586687853.87760198</real>
+			<key>timeStoppedRecording</key>
+			<real>586687855.73631597</real>
+			<key>title</key>
+			<string>Building project nintendoapp with scheme nintendoapp and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>28FABDAD-B750-41E4-B8FC-376995244402</string>
+		</dict>
+		<key>D162B913-4995-47B6-BA58-0CA44540AC2C</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D162B913-4995-47B6-BA58-0CA44540AC2C.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>nintendoapp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>nintendoapp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project nintendoapp with scheme nintendoapp and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>589379312.32727599</real>
+			<key>timeStoppedRecording</key>
+			<real>589379316.68732595</real>
+			<key>title</key>
+			<string>Building project nintendoapp with scheme nintendoapp and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>D162B913-4995-47B6-BA58-0CA44540AC2C</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

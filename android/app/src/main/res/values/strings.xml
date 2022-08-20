@@ -1,0 +1,7 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">MFoiwrckUZL1oNsenLqJC7ij8e0y0c4916e7-6c23-4022-bdd0-ea108f3562c6</string>
+
+    <!-- NOTE: app_name is the display name of the app. This is now set in android/app/build.gradle -Aubs -->
+    <string name="app_name">NintendoApp</string>
+
+</resources>

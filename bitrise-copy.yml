@@ -1,0 +1,429 @@
+---
+# Bitrise uses it's own hosted copy of bitrise.yml without special configuration (unlike CircleCI),
+# This file is stored in the repo so that we can track changes and use a real editor to change config,
+# but it must be manually copied to bitrise.io to do anything.
+
+# Essentially, their UX is aggravating and I want commit messages
+
+# Updated: 2019-15-08
+format_version: '5'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+workflows:
+  deploy-staging:
+    before_run:
+    - setup-build
+    - run-tests
+    after_run:
+    - build-ios-ipa-support
+    - build-android-apk
+    - download-cache
+    - push-cache
+    - deploy-to-bitrise
+    - release-appcenter-staging
+  support:
+    before_run:
+    - setup-build
+    - run-tests
+    after_run:
+    - build-ios-ipa-support
+    meta:
+      bitrise.io:
+        stack: osx-xamarin-stable
+  build-ios-ipa-support:
+    steps:
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            pwd
+            ls -a
+            ls -a /Users/vagrant/
+            ls  -a /Users/
+    - certificate-and-profile-installer@1.10.1:
+        is_always_run: true
+    - xcode-archive@2.6.0:
+        inputs:
+        - team_id: L85U5D3L8B
+  build-ios-ipa:
+    steps:
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            pwd
+            ls -a
+            ls -a /Users/vagrant/
+            ls  -a /Users/
+    - certificate-and-profile-installer@1.9.2:
+        is_always_run: true
+    - xcode-archive@2.4.6:
+        inputs:
+        - force_team_id: L85U5D3L8B
+        - team_id: ''
+        - export_method: development
+  build-android-apk:
+    steps:
+    - file-downloader@1.0.1:
+        title: download keystore for signing (from bitrise)
+        inputs:
+        - source: "$BITRISEIO_ANDROID_KEYSTORE_URL"
+        - destination: "$BITRISE_SOURCE_DIR/android.keystore"
+    - install-missing-android-tools: {}
+    - change-android-versioncode-and-versionname@1.1.1:
+        inputs:
+        - new_version_name: "$BITRISE_GIT_TAG"
+        - build_gradle_path: "$GRADLE_BUILD_FILE_PATH"
+    - gradle-runner@1.9.0:
+        title: generate and sign Android apk
+        inputs:
+        - gradle_task: assembleRelease
+        - gradlew_path: "$GRADLEW_PATH"
+  setup-build:
+    steps:
+    - activate-ssh-key@4.0.3:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - npm@1.0.2:
+        title: Install code-push CLI
+        inputs:
+        - command: install -g code-push-cli
+    - git-clone@4.0.15:
+        title: Clone RN source code
+        inputs:
+        - branch: ''
+        - commit: ''
+        - clone_into_dir: "$BITRISE_SOURCE_DIR "
+    - script@1.1.5:
+        inputs:
+        - content: "pwd \nls -a\ngit clone $APP_GIT_SRC $BITRISE_SOURCE_DIR/\ngit
+            checkout $BITRISE_GIT_BRANCH\nls -a"
+    - npm@1.0.2:
+        title: Install RN Dependencies
+        inputs:
+        - command: install
+    after_run: []
+  tests-setup:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - nvm@1.2.1:
+        inputs:
+        - node_version: '8'
+    - script@1.1.5:
+        inputs:
+        - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# debug
+            log\nset -x\n\n# write your script here\nnpm config set proxy null \nnpm
+            config set https-proxy null\nnpm config set registry http://registry.npmjs.org/\n\n#
+            or run a script from your repository, like:\n# bash ./path/to/script.sh\n#
+            not just bash, e.g.:\n# ruby ./path/to/script.rb"
+    - npm@0.9.1:
+        title: Install Code-Push CLI
+        inputs:
+        - command: install -g code-push-cli
+    - git-clone@4.0.10:
+        title: Clone RN source code
+        inputs:
+        - branch: ''
+        - commit: ''
+        - clone_into_dir: "$BITRISE_SOURCE_DIR "
+    - script@1.1.5:
+        inputs:
+        - content: "pwd \nls -a\ngit clone $APP_GIT_SRC $BITRISE_SOURCE_DIR/\ngit
+            checkout $BITRISE_GIT_BRANCH\nls -a"
+    - npm@0.9.1:
+        title: Install RN Dependencies
+        inputs:
+        - command: install
+    - npm@0.9.1:
+        title: Install Detox CLI
+        inputs:
+        - command: install -g detox-cli
+    - script:
+        title: Install Detox utils
+        inputs:
+        - content: |-
+            #!/bin/bash
+
+            brew tap wix/brew
+            brew install applesimutils
+    - file-downloader@1.0.1:
+        title: Download keystore for signing (from bitrise)
+        inputs:
+        - destination: "$BITRISE_SOURCE_DIR/android.keystore"
+        - source: "$BITRISEIO_ANDROID_KEYSTORE_URL"
+    after_run: []
+  run-tests:
+    steps:
+    - yarn@0.0.8:
+        title: Jest - run unit tests
+        inputs:
+        - command: test:unit
+  codepushify-app: {}
+  set-api-url:
+    steps:
+    - change-value@1.1.0:
+        inputs:
+        - old_value: "$API_URL_STAGING"
+        - new_value: "$API_URL_PRODUCTION"
+        - file: "$API_FILE_PATH"
+        title: API url staging with production change
+  set-codepush-staging-keys:
+    steps:
+    - change-value@1.1.0:
+        title: Change Android Codepush Deploy Key
+        inputs:
+        - old_value: "$CODEPUSH_ANDROID_DEPLOY_KEY_PRODUCTION"
+        - new_value: "$CODEPUSH_ANDROID_DEPLOY_KEY_STAGING"
+        - file: "$STRINGS_PATH"
+    - change-value@1.1.0:
+        title: Change iOS Codepush Deploy Key
+        inputs:
+        - old_value: "$CODEPUSH_IOS_DEPLOY_KEY_PRODUCTION"
+        - new_value: "$CODEPUSH_IOS_DEPLOY_KEY_STAGING"
+        - file: "$PLIST_PATH"
+  set-app-version:
+    steps:
+    - change-value@1.1.0:
+        title: Change App version inside app
+        inputs:
+        - old_value: export const APP_VERSION = DeviceInfo.getReadableVersion();
+        - new_value: export const APP_VERSION = "$BITRISE_GIT_TAG";
+        - file: "$APP_VERSION_PATH"
+  set-production-code-push-keys:
+    steps:
+    - change-value@1.1.0:
+        title: iOS set production code-push keys
+        inputs:
+        - old_value: "$CODEPUSH_IOS_DEPLOY_KEY_STAGING"
+        - new_value: "$CODEPUSH_IOS_DEPLOY_KEY_PRODUCTION"
+        - file: "$PLIST_PATH"
+    - change-value@1.1.0:
+        title: Android set production code-push keys
+        inputs:
+        - old_value: "$CODEPUSH_ANDROID_DEPLOY_KEY_STAGING"
+        - new_value: "$CODEPUSH_ANDROID_DEPLOY_KEY_PRODUCTION"
+        - file: "$STRINGS_PATH"
+  just_android:
+    after_run:
+    - build-android-apk
+    before_run:
+    - setup-build
+  download-cache:
+    after_run: []
+    steps:
+    - cache-pull@2.1.0: {}
+  push-cache:
+    after_run: []
+    steps:
+    - cache-push@2.2.0:
+        inputs:
+        - cache_paths: |-
+            $HOME/.gradle
+            ./.gradle
+        - ignore_check_on_paths: |-
+            $HOME/.gradle/caches/*.lock
+            ./.gradle/*.lock
+            ./.gradle/*.bin
+  bitrise-deploy:
+    steps:
+    - deploy-to-bitrise-io:
+        title: deploy artifacts to bitrise
+  codepush-deploy:
+    steps:
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            cd $BITRISE_SOURCE_DIR
+            ls -a
+    - script:
+        title: code-push auth
+        inputs:
+        - content: |-
+            #!/bin/bash
+            code-push login --accessKey $CODEPUSH_API_TKN
+            code-push app ls
+    - script:
+        title: codepush-deploy ios
+        inputs:
+        - content: |-
+            #!/bin/bash
+            code-push release-react $CODEPUSH_IOS_NAME_PRODUCTION ios -p "${PLIST_PATH}" --targetBinaryVersion "*" --deploymentName Production --mandatory true --description "Build version $BITRISE_GIT_TAG update" --disable-duplicate-release-error
+    - script:
+        title: codepush-deploy android
+        inputs:
+        - content: |-
+            #!/bin/bash
+            code-push release-react $CODEPUSH_ANDROID_NAME_PRODUCTION android --targetBinaryVersion "*" --deploymentName Production --mandatory true --description "Build version $BITRISE_GIT_TAG update" --disable-duplicate-release-error
+        is_always_run: true
+  deploy-to-bitrise:
+    steps:
+    - deploy-to-bitrise-io: {}
+  unit-tests:
+    steps:
+    - yarn@0.0.7:
+        title: Run Jest Unit tests
+        inputs:
+        - command: test:unit
+  release-appcenter-staging:
+    steps:
+    - appcenter-app-release@1.0.0:
+        inputs:
+        - artifact_path: "$BITRISE_IPA_PATH"
+        - appcenter_name: "$APPCENTER_NAME_IOS_STAGING"
+        title: AppCenter App iOS Release
+    - appcenter-app-release@1.0.0:
+        title: AppCenter App Android Release
+        inputs:
+        - appcenter_name: "$APPCENTER_NAME_ANDROID_STAGING"
+        - artifact_path: "$BITRISE_APK_PATH"
+  release-appcenter-production:
+    steps:
+    - appcenter-app-release@1.0.0:
+        title: AppCenter App iOS Release
+        inputs:
+        - appcenter_name: "$APPCENTER_NAME_IOS_PRODUCTION"
+        - artifact_path: "$BITRISE_IPA_PATH"
+    - appcenter-app-release@1.0.0:
+        title: AppCenter App Android Release
+        inputs:
+        - appcenter_name: "$APPCENTER_NAME_ANDROID_PRODUCTION"
+        - artifact_path: "$BITRISE_APK_PATH"
+  detox-e2e-ios-tests:
+    steps:
+    - script@1.1.5:
+        title: Build Detox E2E iOS tests
+        inputs:
+        - content: |-
+            #!/bin/bash
+
+            detox build --configuration ios.sim.release
+    - script@1.1.5:
+        title: Run Detox E2E iOS tests
+        inputs:
+        - content: |-
+            #!/bin/bash
+
+            detox test --configuration ios.sim.release --cleanup
+  detox-e2e-android-tests:
+    steps:
+    - script@1.1.5:
+        title: Build Detox E2E Android tests
+        inputs:
+        - content: |-
+            #!/bin/bash
+
+            # detox build --configuration android.emu.release
+    - script@1.1.5:
+        title: Run Detox E2E Android tests
+        inputs:
+        - content: |-
+            #!/bin/bash
+            #Start screen record
+            #adb shell screenrecord /sdcard/screen.mp4 &
+            #disown
+            #adb logcat &> $BITRISE_DEPLOY_DIR/logcat.txt &
+            #disown
+            #detox test --configuration android.emu.release --cleanup
+    - script@1.1.5:
+        run_if: true
+        is_always_run: true
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            # set -e
+            # debug log
+            # set -x
+
+            # write your script here
+            # adb pull /sdcard/screen.mp4 $BITRISE_DEPLOY_DIR/screen.mp4
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+    - deploy-to-bitrise-io@1.3.18: {}
+  deploy-production:
+    before_run:
+    - setup-build
+    - run-tests
+    - set-api-url
+    - set-app-version
+    - set-production-code-push-keys
+    after_run:
+    - build-ios-ipa-support
+    - build-android-apk
+    - download-cache
+    - codepush-deploy
+    - push-cache
+    - deploy-to-bitrise
+    - release-appcenter-production
+  tests:
+    before_run:
+    - tests-setup
+    after_run:
+    - unit-tests
+    - detox-e2e-ios-tests
+    - detox-e2e-android-tests
+app:
+  envs:
+  - opts:
+      is_expand: false
+    GRADLE_BUILD_FILE_PATH: android/app/build.gradle
+  - opts:
+      is_expand: false
+    GRADLEW_PATH: android/gradlew
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: ios/nintendoapp.xcodeproj
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: nintendoapp
+  - DEPLOY_SCRIPT_DIR: "$HOME/deploy_script"
+  - SLACK_MSG_ICON: https://www.nintendo.com/switch/etRgxnAu0zRX4bmWnt9K628wG7YQUI6t/images/switch/facebook.jpg
+  - APP_NAME: Nintendo App
+  - PROMOTED_APP_HTML_FN: ''
+  - APP_GIT_SRC: git@github.com:ohmygreen/nintendo-app.git
+  - APK_PATH: ''
+  - PLIST_PATH: "./ios/nintendoapp/Info.plist"
+  - opts:
+      is_expand: false
+    API_URL_STAGING: https://staging.ohmygreen.com/api
+  - opts:
+      is_expand: false
+    API_URL_PRODUCTION: https://www.ohmygreen.com/api
+  - opts:
+      is_expand: false
+    API_FILE_PATH: js/constants/api.js
+  - opts:
+      is_expand: false
+    APP_FILE_PATH: App.js
+  - opts:
+      is_expand: false
+    ANDROID_MANIFEST_PATH: android/app/src/main/AndroidManifest.xml
+  - opts:
+      is_expand: false
+    STRINGS_PATH: android/app/src/main/res/values/strings.xml
+  - opts:
+      is_expand: false
+    APP_VERSION_PATH: js/constants/version.js
+  - opts:
+      is_expand: false
+    APPCENTER_ORG: Oh-My-Green
+  - opts:
+      is_expand: false
+    APPCENTER_NAME_IOS_STAGING: Nintendo-App-iOS
+  - opts:
+      is_expand: false
+    APPCENTER_NAME_ANDROID_STAGING: Nintendo-App-Android
+  - opts:
+      is_expand: false
+    APPCENTER_NAME_IOS_PRODUCTION: Nintendo-App-iOS-Production
+  - opts:
+      is_expand: false
+    APPCENTER_NAME_ANDROID_PRODUCTION: Nintendo-App-Android-Production
+trigger_map:
+- push_branch: "*"
+  workflow: tests
+- tag: v*.*.*
+  workflow: deploy-staging
+- tag: v*.*.*-*
+  workflow: deploy-staging

@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditPaymentScreen component should renders correctly 1`] = `
+<AnimatedComponent
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFF",
+        "display": "flex",
+        "flex": 1,
+        "justifyContent": "space-between",
+      },
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "marginTop": 35,
+        "width": "88%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <TextInput
+        allowFontScaling={true}
+        editable={false}
+        keyboardType="numeric"
+        placeholder="Card Number"
+        placeholderTextColor="#d1d1d1"
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderBottomColor": "#d1d1d1",
+            "borderBottomWidth": 1,
+            "color": "#d1d1d1",
+            "flex": 1,
+            "fontSize": 16,
+            "paddingBottom": 10,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "marginTop": 15,
+        }
+      }
+    >
+      <TextInput
+        allowFontScaling={true}
+        autoCapitalize="none"
+        autoCorrect={false}
+        keyboardType="numeric"
+        maxLength={5}
+        onChangeText={[Function]}
+        placeholder="MM/YY"
+        placeholderTextColor="#d1d1d1"
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderBottomColor": "#d1d1d1",
+            "borderBottomWidth": 1,
+            "flex": 1,
+            "fontSize": 16,
+            "marginRight": 15,
+            "paddingBottom": 10,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+      <TextInput
+        allowFontScaling={true}
+        editable={false}
+        keyboardType="numeric"
+        placeholder="CVV"
+        placeholderTextColor="#d1d1d1"
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderBottomColor": "#d1d1d1",
+            "borderBottomWidth": 1,
+            "flex": 1,
+            "fontSize": 16,
+            "marginRight": 15,
+            "paddingBottom": 10,
+          }
+        }
+        underlineColorAndroid="transparent"
+      />
+      <TextInput
+        allowFontScaling={true}
+        autoCapitalize="none"
+        autoCorrect={false}
+        keyboardType="numeric"
+        onChangeText={[Function]}
+        placeholder="Zip Code"
+        placeholderTextColor="#d1d1d1"
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderBottomColor": "#d1d1d1",
+            "borderBottomWidth": 1,
+            "flex": 1,
+            "fontSize": 16,
+            "paddingBottom": 10,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
+  </View>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#0EAF27",
+        "borderRadius": 5,
+        "height": 50,
+        "justifyContent": "center",
+        "marginBottom": 50,
+        "width": "88%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#FFF",
+          "fontSize": 20,
+        }
+      }
+    >
+      Update
+    </Text>
+  </TouchableOpacity>
+  <ReactNativeModal
+    animationIn="slideInUp"
+    animationInTiming={300}
+    animationOut="slideOutDown"
+    animationOutTiming={300}
+    avoidKeyboard={false}
+    backdropColor="black"
+    backdropOpacity={0.7}
+    backdropTransitionInTiming={300}
+    backdropTransitionOutTiming={300}
+    hideModalContentWhileAnimating={false}
+    isVisible={false}
+    onBackButtonPress={[Function]}
+    onBackdropPress={[Function]}
+    onModalHide={[Function]}
+    onModalShow={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+      }
+    }
+    swipeThreshold={100}
+    useNativeDriver={false}
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFF",
+          "borderRadius": 3,
+          "display": "flex",
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#000",
+            "fontSize": 24,
+            "fontWeight": "500",
+            "marginTop": 25,
+            "textAlign": "center",
+          }
+        }
+      >
+        Are You Sure You
+Want To Remove Your
+Card?
+      </Text>
+      <View
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <TouchableOpacity
+          activeOpacity={0.2}
+          onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FFF",
+              "borderColor": "#0EAF27",
+              "borderRadius": 5,
+              "borderWidth": 1,
+              "height": 50,
+              "justifyContent": "center",
+              "marginBottom": 30,
+              "marginRight": 8,
+              "marginTop": 25,
+              "width": "44%",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#0EAF27",
+                "fontSize": 20,
+              }
+            }
+          >
+            Cancel
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.2}
+          onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#0EAF27",
+              "borderRadius": 5,
+              "height": 50,
+              "justifyContent": "center",
+              "marginBottom": 30,
+              "marginLeft": 8,
+              "marginTop": 25,
+              "width": "44%",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#FFF",
+                "fontSize": 20,
+              }
+            }
+          >
+            Yes
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  </ReactNativeModal>
+  <ModalSimple
+    headline="There Was An Issue Deleting
+Your Credit Card. Please Try
+Again."
+  />
+  <ModalSimple
+    headline="There Was An Issue Updating
+Your Credit Card. Please Try
+Again."
+  />
+</AnimatedComponent>
+`;

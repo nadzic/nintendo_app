@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+#Thu Aug 01 17:07:04 CEST 2019
+=======
+#Fri Aug 02 13:41:38 CEST 2019
+>>>>>>> a75622d662d22c8478725f966331c0a07becc63c
+base.0=/Users/user/Documents/Repos/nintendo-app/android/app/build/intermediates/transforms/dexMerger/release/0
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Confirm component should renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f3f3f3",
+        "borderTopColor": "#d1d1d1",
+        "borderTopWidth": 0.5,
+        "bottom": 0,
+        "display": "flex",
+        "paddingTop": 7,
+        "position": "absolute",
+        "width": "100%",
+      },
+      Object {
+        "opacity": 0.3,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000",
+          "fontFamily": "BrandonText-Bold",
+          "fontSize": 18,
+          "marginBottom": 8,
+        }
+      }
+    >
+      Total : 
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#0EAF27",
+          "fontFamily": "BrandonText-Bold",
+          "fontSize": 18,
+        }
+      }
+    >
+      $
+      0
+    </Text>
+  </View>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    disabled={true}
+    onPress={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#0EAF27",
+        "borderRadius": 5,
+        "height": 50,
+        "justifyContent": "center",
+        "marginBottom": 15,
+        "width": "88%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#FFF",
+          "fontFamily": "BrandonText-Medium",
+          "fontSize": 20,
+        }
+      }
+    >
+      Confirm and Pay
+    </Text>
+  </TouchableOpacity>
+</View>
+`;

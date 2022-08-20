@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginScreen component should renders correctly 1`] = `
+<KeyboardAvoidingView
+  behavior="padding"
+  enabled={true}
+  keyboardVerticalOffset={0}
+  style={
+    Object {
+      "backgroundColor": "#FFF",
+      "flex": 1,
+      "height": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFF",
+        "flex": 1,
+        "height": "100%",
+      }
+    }
+  >
+    <ImageBackground
+      source={null}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "flex": 1,
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "height": 34,
+            "marginBottom": 65,
+            "marginTop": 65,
+            "width": 160,
+            "zIndex": 100,
+          }
+        }
+      >
+        <Image
+          source={null}
+          style={
+            Object {
+              "height": 34,
+              "width": 160,
+            }
+          }
+          testID="Logo White Login"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": "45%",
+            "width": "88%",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "position": "relative",
+              }
+            }
+          >
+            <Image
+              source={null}
+              style={
+                Object {
+                  "bottom": 16,
+                  "height": 25,
+                  "left": 25,
+                  "margin": 5,
+                  "padding": 10,
+                  "position": "absolute",
+                  "width": 25,
+                  "zIndex": 100,
+                }
+              }
+            />
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+              onChangeText={[Function]}
+              placeholder="Email"
+              placeholderTextColor="#d1d1d1"
+              rejectResponderTermination={true}
+              style={
+                Object {
+                  "backgroundColor": "#FFF",
+                  "borderTopLeftRadius": 5,
+                  "borderTopRightRadius": 5,
+                  "fontFamily": "BrandonText-Medium",
+                  "fontSize": 18,
+                  "height": 66,
+                  "paddingLeft": 60,
+                  "width": "100%",
+                }
+              }
+              testID="Email Input Login"
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "#cacaca",
+                "borderBottomWidth": 0.5,
+                "left": "6%",
+                "position": "absolute",
+                "top": 65,
+                "width": "88%",
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "position": "relative",
+              }
+            }
+          >
+            <Image
+              source={null}
+              style={
+                Object {
+                  "bottom": 17,
+                  "height": 24,
+                  "left": 25,
+                  "margin": 5,
+                  "position": "absolute",
+                  "width": 24,
+                  "zIndex": 100,
+                }
+              }
+            />
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              autoCorrect={false}
+              onChangeText={[Function]}
+              placeholder="Password"
+              placeholderTextColor="#d1d1d1"
+              rejectResponderTermination={true}
+              secureTextEntry={true}
+              style={
+                Object {
+                  "backgroundColor": "#FFF",
+                  "borderBottomLeftRadius": 5,
+                  "borderBottomRightRadius": 5,
+                  "fontFamily": "BrandonText-Medium",
+                  "fontSize": 18,
+                  "height": 66,
+                  "paddingLeft": 60,
+                  "width": "100%",
+                }
+              }
+              testID="Password Input Login"
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>
+        </View>
+        <TouchableOpacity
+          activeOpacity={0.2}
+          onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#0EAF27",
+              "borderRadius": 5,
+              "height": 50,
+              "justifyContent": "center",
+              "marginTop": 30,
+              "width": "100%",
+            }
+          }
+          testID="Log In Button Login"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#FFF",
+                "fontFamily": "BrandonText-Medium",
+                "fontSize": 20,
+              }
+            }
+          >
+            Log In
+          </Text>
+        </TouchableOpacity>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "paddingTop": 18,
+            }
+          }
+        >
+          <Link
+            navFunction={[Function]}
+            testID="Create Account Login"
+            text="Create an Account"
+          />
+          <Text
+            style={
+              Object {
+                "color": "#FFF",
+                "paddingLeft": 15,
+                "paddingRight": 15,
+              }
+            }
+          >
+            |
+          </Text>
+          <Link
+            navFunction={[Function]}
+            testID="Forgot Password Login"
+            text="Forgot Password?"
+          />
+        </View>
+      </View>
+      <ModalSimple
+        content="Check your email to complete."
+        headline="Reset Password
+Instructions Sent."
+        testID="Modal Reset Password Login"
+      />
+      <ModalSimple
+        headline="We Can't Find
+An Account With
+This Email.
+Please Sign Up Instead."
+        testID="Modal Not Registred Login"
+      />
+      <ModalSimple
+        headline="This Email Is Registered
+But Needs To Be Confirmed."
+        testID="Modal Not Confirmed Login"
+      />
+      <ModalSimple
+        headline="Invalid Password.
+Please Try Again."
+        testID="Modal Invalid Password Login"
+      />
+    </ImageBackground>
+  </View>
+</KeyboardAvoidingView>
+`;

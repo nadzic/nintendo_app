@@ -1,0 +1,27 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TODO: add again keyback to gitignore, remove it from project and add it to bitrise
+# key
+# /android/app/my-release-key.keystore
+
+#codesigndoc_exports
+/codesigndoc_exports
+
+# Bundle artifact
+56	*.jsbundle
+
+#local.properties
+/android/local.properties

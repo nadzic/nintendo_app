@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverlayMask component should renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "height": "100%",
+      "justifyContent": "space-around",
+      "left": 0,
+      "position": "absolute",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 57,
+        },
+        Object {
+          "width": "100%",
+        },
+        Object {
+          "backgroundColor": "rgba(1,1,1,0.6)",
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 30,
+        },
+        Object {
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "width": 275,
+          },
+          Object {
+            "backgroundColor": "rgba(1,1,1,0.6)",
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "width": 300,
+        }
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "width": 275,
+          },
+          Object {
+            "backgroundColor": "rgba(1,1,1,0.6)",
+          },
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 57,
+        },
+        Object {
+          "width": "100%",
+        },
+        Object {
+          "backgroundColor": "rgba(1,1,1,0.6)",
+        },
+      ]
+    }
+  />
+</View>
+`;

@@ -1,0 +1,33 @@
+import {
+  REQUEST_GET_CREDIT_CARD,
+  REQUEST_GET_CREDIT_CARD_SUCCESS,
+  REQUEST_GET_CREDIT_CARD_FAILURE,
+  REQUEST_ADD_CREDIT_CARD,
+  REQUEST_ADD_CREDIT_CARD_SUCCESS,
+  REQUEST_ADD_CREDIT_CARD_FAILURE,
+  REQUEST_UPDATE_CREDIT_CARD_SUCCESS,
+  REQUEST_DELETE_CREDIT_CARD_SUCCESS,
+  REQUEST_DELETE_CREDIT_CARD_FAILURE,
+} from 'nintendoapp/js/actions/actionTypes';
+
+const creditCard = (state = {}, action = {}) => {
+  switch (action.type) {
+    case REQUEST_ADD_CREDIT_CARD:
+    case REQUEST_ADD_CREDIT_CARD_FAILURE:
+    case REQUEST_DELETE_CREDIT_CARD_SUCCESS:
+    case REQUEST_DELETE_CREDIT_CARD_FAILURE:
+    case REQUEST_GET_CREDIT_CARD:
+    case REQUEST_GET_CREDIT_CARD_FAILURE:
+      return {};
+    case REQUEST_ADD_CREDIT_CARD_SUCCESS:
+    case REQUEST_UPDATE_CREDIT_CARD_SUCCESS:
+    case REQUEST_GET_CREDIT_CARD_SUCCESS:
+      return {
+        customer: action.customer,
+      };
+    default:
+      return state;
+  }
+};
+
+export default creditCard;

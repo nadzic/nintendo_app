@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCartScreen component should renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F8F8F8",
+      "height": "100%",
+    }
+  }
+>
+  <ProductList />
+  <Confirm
+    authToken=""
+  />
+</View>
+`;

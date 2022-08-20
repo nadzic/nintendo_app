@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScanProductScreen component should renders correctly 1`] = `
+<SideMenu
+  animationFunction={[Function]}
+  animationStyle={[Function]}
+  autoClosing={true}
+  bounceBackOnOverdraw={true}
+  disableGestures={false}
+  edgeHitWidth={60}
+  hiddenMenuOffset={0}
+  isOpen={false}
+  menu={
+    <Memo(ConnectFunction)
+      onItemSelected={[Function]}
+    />
+  }
+  menuPosition="left"
+  onChange={[Function]}
+  onMove={[Function]}
+  onSliding={[Function]}
+  onStartShouldSetResponderCapture={[Function]}
+  openMenuOffset={500}
+  toleranceX={10}
+  toleranceY={10}
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#000",
+        "flex": 1,
+        "flexDirection": "column",
+      }
+    }
+  >
+    <QRCodeScanner
+      cameraProps={Object {}}
+      cameraStyle={
+        Object {
+          "height": 1334,
+        }
+      }
+      cameraType="back"
+      checkAndroid6Permissions={false}
+      customMarker={
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "flex": 1,
+                "height": 750,
+                "justifyContent": "center",
+                "width": 750,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "position": "absolute",
+                  "top": 53,
+                  "zIndex": 100,
+                }
+              }
+            >
+              <Image
+                source={null}
+                style={
+                  Object {
+                    "height": 36,
+                    "width": 126,
+                  }
+                }
+                testID="Logo Dark Scan Product"
+              />
+            </View>
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Object {
+                  "left": 15,
+                  "padding": 10,
+                  "position": "absolute",
+                  "top": 20,
+                }
+              }
+              testID="Menu Scan Product"
+            >
+              <Image
+                source={null}
+                style={
+                  Object {
+                    "height": 30,
+                    "width": 30,
+                  }
+                }
+              />
+            </TouchableOpacity>
+            <View
+              style={
+                Object {
+                  "position": "absolute",
+                  "top": 300,
+                  "zIndex": 100,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FFF",
+                    "fontFamily": "BrandonText-Medium",
+                    "fontSize": 16,
+                  }
+                }
+              >
+                For 
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "rgba(0,0,0,0.5)",
+                  "height": 525,
+                  "width": 750,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "height": 487.5,
+                  "justifyContent": "center",
+                  "width": 487.5,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "backgroundColor": "rgba(0,0,0,0.5)",
+                  "height": 525,
+                  "width": 750,
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "flex": 1,
+                "height": 750,
+                "justifyContent": "center",
+                "width": 750,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "bottom": 300,
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "fontFamily": "BrandonText-Medium",
+                  "position": "absolute",
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FFF",
+                    "fontSize": 26,
+                    "marginBottom": 20,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Scan product barcode
+              </Text>
+            </View>
+          </View>
+        </View>
+      }
+      fadeIn={true}
+      notAuthorizedView={
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 16,
+                "textAlign": "center",
+              }
+            }
+          >
+            Camera not authorized
+          </Text>
+        </View>
+      }
+      onRead={[Function]}
+      pendingAuthorizationView={
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 16,
+                "textAlign": "center",
+              }
+            }
+          >
+            ...
+          </Text>
+        </View>
+      }
+      permissionDialogMessage="We need your permission to use your camera phone"
+      permissionDialogTitle="Permission to use camera"
+      reactivate={true}
+      reactivateTimeout={3000}
+      showMarker={true}
+      vibrate={true}
+    />
+    <ModalSimple
+      headline="This Product Is Not
+Carried By Our
+Kitchen Service."
+      testID="Modal Product Code Not Valid Login"
+    />
+    <ModalSimple
+      headline="There Was
+A Connection Issue.
+Please Try Again."
+    />
+  </View>
+</SideMenu>
+`;

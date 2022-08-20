@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaymentScreen component should renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "stretch",
+      "backgroundColor": "#FFF",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#F8F8F8",
+        "borderRadius": 3,
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "space-between",
+        "marginTop": 30,
+        "padding": 15,
+        "width": "88%",
+      }
+    }
+  >
+    <React.Fragment>
+      <Text
+        style={
+          Object {
+            "fontFamily": "BrandonText-Bold",
+            "fontSize": 16,
+            "fontWeight": "bold",
+          }
+        }
+      >
+         ****
+      </Text>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+      >
+        <Text
+          style={
+            Object {
+              "color": "#0EAF27",
+              "fontFamily": "BrandonText-Bold",
+              "fontSize": 16,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Edit
+        </Text>
+      </TouchableOpacity>
+    </React.Fragment>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "width": "100%",
+        },
+        undefined,
+      ]
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#0EAF27",
+          "borderRadius": 5,
+          "height": 50,
+          "justifyContent": "center",
+          "marginTop": 30,
+          "width": "88%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#FFF",
+            "fontFamily": "BrandonText-Medium",
+            "fontSize": 20,
+          }
+        }
+      >
+        Pay 
+        <Text
+          style={
+            Object {
+              "fontFamily": "BrandonText-Bold",
+            }
+          }
+        >
+          $
+          0
+        </Text>
+      </Text>
+    </TouchableOpacity>
+  </View>
+  <ModalSimple
+    headline="There Was An Issue
+Processing Your Payment.
+Please Try Again Or Add A
+New Credit Card."
+  />
+</View>
+`;
